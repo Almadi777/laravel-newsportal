@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Adding a category</h1>
+                    <h1 class="m-0">Сategory editing</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -25,15 +25,17 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.category.store') }}" method="POST" class="w-25">
+                    <form action="{{ route('admin.categories.update', $category->id ) }}" method="POST" class="w-25">
                         @csrf
+                        @method('PATCH')
                         <div class="form-group">
-                            <input type="text" class="form-control" name="title" placeholder="Name of category">
+                            <input type="text" class="form-control" name="title" placeholder="Name of category"
+                            value="{{ $category->title }}">
                             @error('title')
-                                <div class="text-danger">{{ $message }}</div>
+                                <div class="text-danger">This field is required to fill out</div>
                             @enderror
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <input type="submit" class="btn btn-primary" value="Update">
                     </form>
                 </div>
                 <!-- ./col -->

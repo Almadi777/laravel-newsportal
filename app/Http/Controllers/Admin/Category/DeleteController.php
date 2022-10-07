@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin\Category;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Category\UpdateRequest;
 use App\Models\Category;
 
 class DeleteController extends Controller
@@ -12,6 +11,6 @@ class DeleteController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.categories.index');
     }
 }
