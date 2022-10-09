@@ -25,14 +25,14 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.post.update', $post->id ) }}" method="POST">
+                    <form action="{{ route('admin.post.update', $post->id ) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
                             <input type="text" class="form-control" name="title" placeholder="Name of post"
                                    value="{{ $post->title }}">
                             @error('content')
-                            <div class="text-danger">This field is required</div>
+                            <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             @error('preview_image')
-                            <div class="text-danger">This field is required</div>
+                            <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                             @error('main_image')
-                            <div class="text-danger">This field is required</div>
+                            <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
