@@ -30,7 +30,7 @@
                         <div class="form-group">
                             <input type="text" class="form-control" name="title" placeholder="Name of post"
                             value="{{ old('title') }}">
-                            @error('title')
+                            @error('content')
                                 <div class="text-danger">This field is required</div>
                             @enderror
                         </div>
@@ -45,6 +45,9 @@
                                     <span class="input-group-text">Upload</span>
                                 </div>
                             </div>
+                            @error('preview_image')
+                            <div class="text-danger">This field is required</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Add main image</label>
@@ -57,9 +60,28 @@
                                     <span class="input-group-text">Upload</span>
                                 </div>
                             </div>
+                            @error('main_image')
+                            <div class="text-danger">This field is required</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <textarea id="summernote" name="content"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Select a category</label>
+                            <select name="category_id" class="form-control">
+                                @foreach($category as $categories)
+                                    <option value="{{ $categories->id }}">{{ $categories->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Tags</label>
+                            <select class="select2" name="tag_ids[]" multiple="multiple" data-placeholder="Select a tags" style="width: 100%;">
+                                @foreach($tags as $tag)
+                                <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Submit">
