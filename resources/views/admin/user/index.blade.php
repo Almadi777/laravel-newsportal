@@ -45,12 +45,12 @@
                                 <tbody>
                                 @foreach($user as $users)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td class="text-center"><a href="{{ route('admin.user.show', $user->id) }}"><i class="far fa-eye"></i></a></td>
-                                    <td class="text-center"><a href="{{ route('admin.user.edit', $user->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
+                                    <td>{{ $users->id }}</td>
+                                    <td>{{ $users->name }}</td>
+                                    <td class="text-center"><a href="{{ route('admin.user.show', $users->id) }}"><i class="far fa-eye"></i></a></td>
+                                    <td class="text-center"><a href="{{ route('admin.user.edit', $users->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                     <td class="text-center">
-                                        <form action="{{ route('admin.user.delete', $user->id) }}"
+                                        <form action="{{ route('admin.user.delete', $users->id) }}"
                                               method="POST">
                                               @csrf
                                               @method('DELETE')

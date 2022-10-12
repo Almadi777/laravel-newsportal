@@ -33,6 +33,18 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="email" placeholder="Email">
+                            @error('email')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="password" placeholder="Name of user">
+                            @error('password')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <input type="submit" class="btn btn-primary" value="Submit">
                     </form>
                 </div>
