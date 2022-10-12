@@ -15,7 +15,6 @@
 
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 
-
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
@@ -86,5 +85,10 @@
     });
     $('.select2').select2()
 </script>
+<style>
+    .custom-file-input:lang(en)~.custom-file-label::after {
+        content: "...";
+    }
+</style>
 </body>
 </html>

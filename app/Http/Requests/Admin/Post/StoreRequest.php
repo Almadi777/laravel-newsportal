@@ -39,6 +39,8 @@ class StoreRequest extends FormRequest
         return [
             'title.required' => 'This field is required',
             'title.string' => 'The data must match the string type',
+            'content.required' => 'This field is required',
+            'content.string' => 'The data must match the string type',
             'preview_image.required' => 'This field is required',
             'preview_image.file' => 'You need to select a file',
             'main_image.required' => 'This field is required',
