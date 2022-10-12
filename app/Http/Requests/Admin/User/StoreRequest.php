@@ -25,8 +25,22 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|string|email',
+            'email' => 'required|string|email|unique:users',
             'password' => 'required|string'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'This field is required',
+            'name.string' => 'Name must be a string',
+            'email.required' => 'This field is required',
+            'email.string' => 'Mail must be a string',
+            'email.email' => 'Your mail must match the format mail@some.domain',
+            'email.unique' => 'User with this email already exists',
+            'password.required' => 'This field is required',
+            'password.string' => 'Password must be a string',
         ];
     }
 }
