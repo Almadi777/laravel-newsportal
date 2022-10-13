@@ -40,8 +40,15 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="password" placeholder="Name of user">
-                            @error('password')
+                            <label>Select a role</label>
+                            <select name="role" class="form-control">
+                                @foreach($roles as $id => $role)
+                                    <option value="{{ $id }}"
+                                        {{ $id ==old('role_id') ? 'selected' : '' }}
+                                    >{{ $role }}</option>
+                                @endforeach
+                            </select>
+                            @error('role')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
