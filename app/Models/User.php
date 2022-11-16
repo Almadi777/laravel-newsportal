@@ -15,12 +15,16 @@ class User extends Authenticatable implements MustVerifyEmail
 
     const ROLE_ADMIN = 0;
     const ROLE_READER = 1;
+    const ROLE_REDACTOR = 2;
+    const ROLE_WRITER = 3;
 
     public static function getRoles()
     {
         return [
             self::ROLE_ADMIN => 'Admin',
             self::ROLE_READER => 'Reader',
+            self::ROLE_REDACTOR => 'Redactor',
+            self::ROLE_WRITER => 'Writer',
         ];
     }
 

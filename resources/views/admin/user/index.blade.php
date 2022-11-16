@@ -26,7 +26,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-1 mb-3">
-                    <a href="{{ route('admin.user.create') }}" class="btn btn-block btn-primary">Submit</a>
+                    <a href="{{ route('admin.users.create') }}" class="btn btn-block btn-primary">Submit</a>
                 </div>
             </div>
             <div class="row">
@@ -43,14 +43,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($user as $users)
+                                @foreach($users as $user)
                                 <tr>
-                                    <td>{{ $users->id }}</td>
-                                    <td>{{ $users->name }}</td>
-                                    <td class="text-center"><a href="{{ route('admin.user.show', $users->id) }}"><i class="far fa-eye"></i></a></td>
-                                    <td class="text-center"><a href="{{ route('admin.user.edit', $users->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
+                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td class="text-center"><a href="{{ route('admin.users.show', $user->id) }}"><i class="far fa-eye"></i></a></td>
+                                    <td class="text-center"><a href="{{ route('admin.users.edit', $user->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                     <td class="text-center">
-                                        <form action="{{ route('admin.user.delete', $users->id) }}"
+                                        <form action="{{ route('admin.users.destroy', $user->id) }}"
                                               method="POST">
                                               @csrf
                                               @method('DELETE')
@@ -58,6 +58,15 @@
                                                 <i class="fas fa-trash text-danger" role="button"></i>
                                               </button>
                                         </form>
+                                    </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-outline status-change-btn" data-user-id="{{ $user->id }}">
+                                            @if($user->status === \App\Enums\UserStatus::$registered)
+                                                <i class="fa fa-lock"></i>
+                                            @else
+                                                <i class="fa fa-lock-open"></i>
+                                            @endif
+                                        </button>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -75,4 +84,26 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+@endsection
+
+@section('scripts')
+<script>
+    $('.status-change-btn')
+        .click(function(e) {
+            let userId = $(this).data('user-id');
+
+            let isUserBanned = $(this).find("i:first").hasClass('fa-lock-open');
+
+            $.ajax("/admin/users/change-status/" + userId, {
+                type: "get",
+                beforeSend: () => {
+                    if(isUserBanned) {
+                        $(this).find('i').removeClass('fa-lock-open').addClass('fa-lock');
+                    } else {
+                        $(this).find('i').removeClass('fa-lock').addClass('fa-lock-open');
+                    }
+                }
+            });
+        })
+</script>
 @endsection

@@ -11,8 +11,9 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v1</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.posts.index') }}">Posts</a></li>
+                        <li class="breadcrumb-item active">Post editing</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -25,7 +26,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.post.update', $post->id ) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.posts.update', $post->id ) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="form-group">

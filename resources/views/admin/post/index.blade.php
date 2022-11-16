@@ -11,8 +11,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v1</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Home</a></li>
+                        <li class="breadcrumb-item active">Posts</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -26,7 +26,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-1 mb-3">
-                    <a href="{{ route('admin.post.create') }}" class="btn btn-block btn-primary">Submit</a>
+                    <a href="{{ route('admin.posts.create') }}" class="btn btn-block btn-primary">Submit</a>
                 </div>
             </div>
             <div class="row">
@@ -47,10 +47,10 @@
                                 <tr>
                                     <td>{{ $post->id }}</td>
                                     <td>{{ $post->title }}</td>
-                                    <td class="text-center"><a href="{{ route('admin.post.show', $post->id) }}"><i class="far fa-eye"></i></a></td>
-                                    <td class="text-center"><a href="{{ route('admin.post.edit', $post->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
+                                    <td class="text-center"><a href="{{ route('admin.posts.show', $post->id) }}"><i class="far fa-eye"></i></a></td>
+                                    <td class="text-center"><a href="{{ route('admin.posts.edit', $post->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a></td>
                                     <td class="text-center">
-                                        <form action="{{ route('admin.post.delete', $post->id) }}"
+                                        <form action="{{ route('admin.posts.destroy', $post->id) }}"
                                               method="POST">
                                               @csrf
                                               @method('DELETE')

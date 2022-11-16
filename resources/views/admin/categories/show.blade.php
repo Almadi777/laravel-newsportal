@@ -9,7 +9,7 @@
                 <div class="col-sm-6 d-flex align-items-center">
                     <h1 class="m-0 mr-2">{{ $category->title }}</h1>
                     <a href="{{ route('admin.categories.edit', $category->id) }}" class="text-success"><i class="fas fa-pencil-alt"></i></a>
-                    <form action="{{ route('admin.categories.delete', $category->id) }}"
+                    <form action="{{ route('admin.categories.destroy', $category->id) }}"
                           method="POST">
                         @csrf
                         @method('DELETE')

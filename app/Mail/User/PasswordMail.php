@@ -27,7 +27,7 @@ class PasswordMail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): PasswordMail
     {
         return $this->markdown('mail.user.password');
     }

@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-12">
                         @foreach($posts ?? '' as $post)
-                            <form action="{{ route('admin.post.update', $post->id ) }}" method="POST"
+                            <form action="{{ route('admin.posts.update', $post->id ) }}" method="POST"
                                   enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')

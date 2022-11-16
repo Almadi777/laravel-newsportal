@@ -12,7 +12,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Users</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Users</a></li>
+                        <li class="breadcrumb-item active">Editing users</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -25,7 +26,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.user.update', $user->id ) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.users.update', $user->id ) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
@@ -50,10 +51,10 @@
                                     >{{ $role }}</option>
                                 @endforeach
                             </select>
+
                             @error('role')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
-                            <input type="hidden" name="user_id" value="{{ $user->id }}">
                         </div>
                         <input type="submit" class="btn btn-primary" value="Update">
                     </form>
