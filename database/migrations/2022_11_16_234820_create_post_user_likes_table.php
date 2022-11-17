@@ -20,7 +20,7 @@ class CreatePostUserLikesTable extends Migration
             $table->timestamps();
 
             $table->index('post_id', 'pul_post_idx');
-            $table->index('post_id', 'pul_user_idx');
+            $table->index('user_id', 'pul_user_idx');
 
             $table->foreign('post_id','pul_post_fk')->on('posts')->references('id');
             $table->foreign('user_id','pul_user_fk')->on('users')->references('id');
