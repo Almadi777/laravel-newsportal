@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Main'], function () {
-    Route::get('/', 'IndexController');
+    Route::get('/', 'IndexController')->name('main.index');
 });
 
 Route::name('personal.')->group(function()
@@ -23,6 +23,9 @@ Route::name('personal.')->group(function()
         });
         Route::group(['namespace' => 'Comment', 'prefix' => 'comments'], function () {
             Route::get('/', 'IndexController')->name('comment.index');
+            Route::get('/{comments}/edit', 'EditController')->name('comment.edit');
+            Route::patch('/{comments}', 'UpdateController')->name('comment.update');
+            Route::delete('/{comments}', 'DeleteController')->name('comment.delete');
         });
     });
 });
