@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['namespace' => 'Main'], function () {
-    Route::get('/', 'IndexController')->name('main.index');
-});
+    Route::any('/',function () {
+        return view('index');
+    } )->name('main.index');
+
