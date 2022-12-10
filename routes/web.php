@@ -2,7 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-    Route::any('/',function () {
-        return view('index');
-    } )->name('main.index');
+Route::get('/{path}', function () {
+    return view('index');
+})
+    ->where('path', '^((?!api\/).)*$')
+    ->name('main.index');
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
