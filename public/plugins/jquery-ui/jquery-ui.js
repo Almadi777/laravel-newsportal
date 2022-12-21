@@ -9522,7 +9522,7 @@ var ie = $.ui.ie = !!/msie [\w.]+/.exec( navigator.userAgent.toLowerCase() );
 
 //>>label: Mouse
 //>>group: Widgets
-//>>description: Abstracts mouse-based interactions to assist in creating certain widgets.
+//>>description: Contracts mouse-based interactions to assist in creating certain widgets.
 //>>docs: http://api.jqueryui.com/mouse/
 
 

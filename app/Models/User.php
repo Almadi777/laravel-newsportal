@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use PhpParser\Comment;
+use Laravel\Passport\HasApiTokens;
 
+
+/**
+ * @method static count()
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
@@ -64,12 +67,24 @@ class User extends Authenticatable implements MustVerifyEmail
     {
 
     }
+
     public function likedPosts()
     {
-        return $this->belongsToMany(Post::class, 'post_user_likes', 'user_id', 'post_id');
+        return $this->belongsToMany(Post::class);
     }
+
     public function comments()
     {
-        return $this->hasMany(Comment::class,'user_id','id');
+        return $this->hasMany(Comments::class);
+    }
+
+    public function postRelatedComments()
+    {
+        return $this->posts()->with('comments');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }
